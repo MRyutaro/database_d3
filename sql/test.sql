@@ -1,6 +1,9 @@
-drop table Students;
+\l
+\dt
 
-create table Students (
+drop table students;
+
+create table students (
     id char(8) not null,
     name char(20),
     age INT,
@@ -8,9 +11,9 @@ create table Students (
     primary key (id)
 );
 
-insert into Students values
+insert into students values
 ('822xxx01', 'Taro SATO', 20, 'M'),
 ('822xxx02', 'Hanako SUZUKI', 21, 'F')
 ;
 
-select * from Students;
+select * from students;
