@@ -1,3 +1,5 @@
+drop table Students;
+
 create table Students (
     name char(20),
     age INT
