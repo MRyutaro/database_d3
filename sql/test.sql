@@ -6,7 +6,7 @@ drop table students;
 create table students (
     id char(8) not null,
     name char(20),
-    age INT,
+    age int,
     sex char(1),
     primary key (id)
 );
