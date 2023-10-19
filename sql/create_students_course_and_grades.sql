@@ -1,10 +1,10 @@
 \l
 \dt
 
-drop table grades;
+drop table scores;
 drop table students;
 drop table subjects;
-drop table grade_scale;
+drop table scores_grades;
 
 create table students (
     id char(8) not null,
@@ -20,7 +20,7 @@ create table subjects (
     primary key (id)
 );
 
-create table grades (
+create table scores (
     student_id char(8) not null,
     subject_id char(8) not null,
     score int not null,
@@ -29,7 +29,7 @@ create table grades (
     foreign key (subject_id) references subjects(id)
 );
 
-create table grade_scale (
+create table scores_grades (
     grade char(1) not null,
     max_score int not null,
     min_score int not null,
@@ -55,7 +55,7 @@ insert into subjects values
     ('1004', 'Chemistry', 2),
     ('1005', 'Biology', 2);
 
-insert into grades values
+insert into scores values
     ('822xxx01', '1001', 90),
     ('822xxx01', '1002', 85),
     ('822xxx02', '1001', 88),
@@ -77,7 +77,7 @@ insert into grades values
     ('822xxx10', '1001', 83),
     ('822xxx10', '1004', 87);
 
-insert into grade_scale values
+insert into scores_grades values
     ('S', 100, 90),
     ('A', 89, 80),
     ('B', 79, 70),
@@ -86,5 +86,5 @@ insert into grade_scale values
 
 select * from students;
 select * from subjects;
-select * from grades;
-select * from grade_scale;
+select * from scores;
+select * from scores_grades;
