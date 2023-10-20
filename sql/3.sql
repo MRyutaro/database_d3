@@ -1,6 +1,11 @@
 select
     student_name,
-    subject_name,
+    (
+        case
+            when grade = 'F' then 0
+            else credit_units
+        end
+    ) as credit_units,
     score,
     grade
 from (
@@ -16,10 +21,10 @@ from (
             where score >= min_score and score <= max_score
         ) as grade,
         (
-            select name
+            select credit_units
             from subjects
             where id = subject_id
-        ) as subject_name,
+        ) as credit_units,
         score
     from scores
 ) as subquery
