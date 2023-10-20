@@ -1,3 +1,4 @@
+explain
 select
     student_name,
     sum(

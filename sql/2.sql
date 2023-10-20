@@ -1,4 +1,5 @@
-select 
+explain
+select
     (select name from students where id = student_id),
     avg(score) as avg_score
 from scores

@@ -19,6 +19,7 @@ from (
 ) as subquery
 order by subject_name;
 
+explain
 select
     subject_name,
     student_name

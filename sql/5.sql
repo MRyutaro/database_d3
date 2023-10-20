@@ -19,7 +19,7 @@ from (
 ) as subquery
 order by subject_name;
 
-select
+explain select
     (
         select name
         from subjects
