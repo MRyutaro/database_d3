@@ -16,7 +16,7 @@ create table students (
 create table subjects (
     id char(8) not null,
     name char(20),
-    credit_unit int,
+    credit_units int,
     primary key (id)
 );
 
