@@ -1,12 +1,16 @@
--- get the grade of the student with student_id = '822xxx01';
+-- get the grades of all students
 
 select
-    student_id,
+    student_name,
     score,
     grade
 from (
     select
-        student_id,
+        (
+            select name
+            from students
+            where id = student_id
+        ) as student_name,
         score,
         (
             select grade
@@ -15,4 +19,3 @@ from (
         ) as grade
     from scores
 ) as subquery
-where student_id = '822xxx01';
