@@ -1,13 +1,11 @@
 select
     student_name,
-    (
+    sum(
         case
             when grade = 'F' then 0
             else credit_units
         end
-    ) as credit_units,
-    score,
-    grade
+    ) as total_credit_units
 from (
     select
         (
@@ -24,7 +22,7 @@ from (
             select credit_units
             from subjects
             where id = subject_id
-        ) as credit_units,
-        score
+        ) as credit_units
     from scores
 ) as subquery
+group by student_name;
