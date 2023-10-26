@@ -1,29 +1,28 @@
-explain
-select
+SELECT
     student_name,
-    sum(
-        case
-            when grade = 'F' then 0
-            else credit_units
-        end
-    ) as total_credit_units
-from (
-    select
+    SUM(
+        CASE
+            WHEN grade = 'F' THEN 0
+            ELSE credit_units
+        END
+    ) AS total_credit_units
+FROM (
+    SELECT
         (
-            select name
-            from students
-            where id = student_id
-        ) as student_name,
+            SELECT name
+            FROM students
+            WHERE id = student_id
+        ) AS student_name,
         (
-            select grade
-            from scores_grades
-            where score >= min_score and score <= max_score
-        ) as grade,
+            SELECT grade
+            FROM scores_grades
+            WHERE score >= min_score AND score <= max_score
+        ) AS grade,
         (
-            select credit_units
-            from subjects
-            where id = subject_id
-        ) as credit_units
-    from scores
-) as subquery
-group by student_name;
+            SELECT credit_units
+            FROM subjects
+            WHERE id = subject_id
+        ) AS credit_units
+    FROM scores
+) AS subquery
+GROUP BY student_name;

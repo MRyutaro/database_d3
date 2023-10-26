@@ -1,7 +1,6 @@
-explain
-select
-    (select name from subjects where id = subject_id) as subject_name,
-    avg(score) as avg_score
-from scores
-group by subject_id
-order by avg_score desc;
+SELECT
+    (SELECT name FROM subjects WHERE id = subject_id) AS subject_name,
+    AVG(score) AS avg_score
+FROM scores
+GROUP BY subject_id
+ORDER BY avg_score DESC;

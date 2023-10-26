@@ -1,19 +1,18 @@
 \l
 \dt
 
-drop table students;
+DROP TABLE students;
 
-create table students (
-    id char(8) not null,
-    name char(20),
-    age int,
-    sex char(1),
-    primary key (id)
+CREATE TABLE students (
+    id CHAR(8) NOT NULL,
+    name CHAR(20),
+    age INT,
+    sex CHAR(1),
+    PRIMARY KEY (id)
 );
 
-insert into students values
+INSERT INTO students VALUES
 ('822xxx01', 'Taro SATO', 20, 'M'),
-('822xxx02', 'Hanako SUZUKI', 21, 'F')
-;
+('822xxx02', 'Hanako SUZUKI', 21, 'F');
 
-select * from students;
+SELECT * FROM students;

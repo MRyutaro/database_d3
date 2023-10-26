@@ -1,48 +1,48 @@
-select
+SELECT
     subject_name,
     student_name,
     score
-from (
-    select
+FROM (
+    SELECT
         (
-            select name
-            from subjects
-            where id = subject_id
-        ) as subject_name,
+            SELECT name
+            FROM subjects
+            WHERE id = subject_id
+        ) AS subject_name,
         (
-            select name
-            from students
-            where id = student_id
-        ) as student_name,
+            SELECT name
+            FROM students
+            WHERE id = student_id
+        ) AS student_name,
         score
-    from scores
-) as subquery
-order by subject_name;
+    FROM scores
+) AS subquery
+ORDER BY subject_name;
 
-explain select
+SELECT
     (
-        select name
-        from subjects
-        where id = subject_id
-    ) as subject_name,
+        SELECT name
+        FROM subjects
+        WHERE id = subject_id
+    ) AS subject_name,
     (
-        select (
-            select name
-            from students
-            where id = student_id
+        SELECT (
+            SELECT name
+            FROM students
+            WHERE id = student_id
         )
-        from (
-            select student_id
-            from scores
-            where subject_id = subquery.subject_id and score = max_score
-        ) as subquery
-    ) as student_name,
+        FROM (
+            SELECT student_id
+            FROM scores
+            WHERE subject_id = subquery.subject_id AND score = max_score
+        ) AS subquery
+    ) AS student_name,
     max_score
-from (
-    select
+FROM (
+    SELECT
         subject_id,
-        max(score) as max_score
-    from scores
-    group by subject_id
-) as subquery
-order by subject_name;
+        MAX(score) AS max_score
+    FROM scores
+    GROUP BY subject_id
+) AS subquery
+ORDER BY subject_name;
