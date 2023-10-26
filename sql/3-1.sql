@@ -1,18 +1,18 @@
 -- get the grade of the student with student_id = '822xxx01';
 
-select
+SELECT
     student_id,
     score,
     grade
-from (
-    select
+FROM (
+    SELECT
         student_id,
         score,
         (
-            select grade
-            from scores_grades
-            where score >= min_score and score <= max_score
-        ) as grade
-    from scores
-) as subquery
-where student_id = '822xxx01';
+            SELECT grade
+            FROM scores_grades
+            WHERE score >= min_score AND score <= max_score
+        ) AS grade
+    FROM scores
+) AS subquery
+WHERE student_id = '822xxx01';
