@@ -1,42 +1,42 @@
 \l
 \dt
 
-drop table scores;
-drop table students;
-drop table subjects;
-drop table scores_grades;
+DROP TABLE scores;
+DROP TABLE students;
+DROP TABLE subjects;
+DROP TABLE scores_grades;
 
-create table students (
-    id char(8) not null,
-    name char(20),
-    age int,
-    primary key (id)
+CREATE TABLE students (
+    id CHAR(8) NOT NULL,
+    name CHAR(20),
+    age INT,
+    PRIMARY KEY (id)
 );
 
-create table subjects (
-    id char(8) not null,
-    name char(20),
-    credit_units int,
-    primary key (id)
+CREATE TABLE subjects (
+    id CHAR(8) NOT NULL,
+    name CHAR(20),
+    credit_units INT,
+    PRIMARY KEY (id)
 );
 
-create table scores (
-    student_id char(8) not null,
-    subject_id char(8) not null,
-    score int not null,
-    primary key (student_id, subject_id),
-    foreign key (student_id) references students(id),
-    foreign key (subject_id) references subjects(id)
+CREATE TABLE scores (
+    student_id CHAR(8) NOT NULL,
+    subject_id CHAR(8) NOT NULL,
+    score INT NOT NULL,
+    PRIMARY KEY (student_id, subject_id),
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(id)
 );
 
-create table scores_grades (
-    grade char(1) not null,
-    max_score int not null,
-    min_score int not null,
-    primary key (grade)
+CREATE TABLE scores_grades (
+    grade CHAR(1) NOT NULL,
+    max_score INT NOT NULL,
+    min_score INT NOT NULL,
+    PRIMARY KEY (grade)
 );
 
-insert into students values
+INSERT INTO students VALUES
     ('822xxx01', 'Taro SATO', 20),
     ('822xxx02', 'Hanako SUZUKI', 21),
     ('822xxx03', 'Yuki TANAKA', 19),
@@ -48,14 +48,14 @@ insert into students values
     ('822xxx09', 'Yuta SUZUKI', 22),
     ('822xxx10', 'Sakiko NISHI', 19);
 
-insert into subjects values
+INSERT INTO subjects VALUES
     ('1001', 'English', 2),
     ('1002', 'Mathematics', 2),
     ('1003', 'Physics', 2),
     ('1004', 'Chemistry', 2),
     ('1005', 'Biology', 2);
 
-insert into scores values
+INSERT INTO scores VALUES
     ('822xxx01', '1001', 90),
     ('822xxx01', '1002', 85),
     ('822xxx02', '1001', 88),
@@ -77,14 +77,14 @@ insert into scores values
     ('822xxx10', '1001', 83),
     ('822xxx10', '1004', 87);
 
-insert into scores_grades values
+INSERT INTO scores_grades VALUES
     ('S', 100, 90),
     ('A', 89, 80),
     ('B', 79, 70),
     ('C', 69, 60),
     ('F', 59, 0);
 
-select * from students;
-select * from subjects;
-select * from scores;
-select * from scores_grades;
+SELECT * FROM students;
+SELECT * FROM subjects;
+SELECT * FROM scores;
+SELECT * FROM scores_grades;
